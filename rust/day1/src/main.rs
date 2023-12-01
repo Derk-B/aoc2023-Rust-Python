@@ -1,8 +1,11 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
+use std::time::Instant;
 
 fn main() {
+    let start = Instant::now();
+
     // Part 1
     let mut result: u32 = 0;
     if let Ok(lines) = read_lines("src/input.txt") {
@@ -28,6 +31,9 @@ fn main() {
     }
 
     println!("part2: {}", result);
+
+    let duration = start.elapsed();
+    println!("Time elapsed: {:?}", duration);
 }
 
 fn get_real_line_value(line: &str) -> u32 {
