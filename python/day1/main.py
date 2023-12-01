@@ -1,3 +1,7 @@
+import time
+
+start_time = time.time()
+
 f = open("input.txt")
 lines = f.readlines()
 
@@ -19,7 +23,7 @@ for line in lines:
     last = findLastDigit(line)
     calibration_sum += 10 * first + last
 
-print(" sum = " + str(calibration_sum))
+print("Part1: " + str(calibration_sum))
 
 
 # Part 2
@@ -68,7 +72,12 @@ for i, line in enumerate(lines):
     last = findRealLastDigit(line)
     calibration_sum += 10 * first + last
 
-print(calibration_sum)
+print("Part1: " + str(calibration_sum))
 
+end_time = time.time()
+
+elapsed_time = end_time - start_time
+
+print("Elapsed time: ", elapsed_time * 1000)
 
         
