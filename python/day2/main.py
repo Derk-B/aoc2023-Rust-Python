@@ -10,8 +10,8 @@ lines = f.readlines()
 def checkSetPossibility(actions: str) -> bool:
     return all(checkActionPossibility(a) for a in actions.split(", "))
 
-def checkActionPossibility(a: str) -> bool:
-    [count, color] = a.split(' ')
+def checkActionPossibility(a: [str]) -> bool:
+    [count, color] = a.split(" ")
     match color:
         case "green":
             return int(count) <= 13
