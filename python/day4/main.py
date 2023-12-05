@@ -45,6 +45,7 @@ print(result)
 # Part 2 result
 result = 0
 for card in card_count:
+    print(card)
     result += card
 
 print(result)
