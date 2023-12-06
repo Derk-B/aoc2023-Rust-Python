@@ -50,3 +50,48 @@ class SeedMap:
         temp_loc = self.light_to_temperature(light_loc)
         humid_loc = self.temperature_to_humidity(temp_loc)
         return self.humidity_to_location(humid_loc)
+
+
+[
+    (start1, len1), for i in [ 79 , 80, ... , 79 + 14 ] | min([[1], 2, 3, 4, 5, 6 ])
+
+    (start2, len2),
+    (start3, len3),
+    (start4, len4),
+]
+
+
+# Single mapping scenario:
+input = [[1], 2, 3, 4, 5, 6 ] # seed range
+mapping = "5 1 6"
+input_mapped = [5, 6, 7, 8, 9, 10]
+input_smart = (5, 6)
+
+# Seedrenge
+(1, 6) = [1, 2, 3, 4, 5, 6]
+map: 5 1 6
+(5, 6) = [5, 6, 7, 8, 9, 10]
+map: 18 5 6
+(18, 6) = [18, 19, 20, 21, 22, 23]
+
+
+# Difficult scenario
+(1, 6) = [1, 2, 3, 4, 5, 6]
+0 <= 1 <= 10
+1 + 6 <= 0 + 10
+map: 5 0 10
+(5 + 1 = 6, 6) = [6, 7, 8, 9, 10, 11]
+
+# Split scenario
+(1, 6) = [1, 2, 3, 4, 5, 6]
+map: 5 0 3 # [0, 1, 2] -> [5, 6, 7]
+
+(s, l) = [6, 7] [3, 4, 5, 6]
+(6, 2) and (3, 4)
+
+# next mapping step:
+for r in [(6, 2), (3, 4)]:
+
+
+# location ranges
+[(6, 2), (3, 2), (18, 6), (1, 2)] = 1

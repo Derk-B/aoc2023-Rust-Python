@@ -1,5 +1,21 @@
 from seed_map import SeedMap
 
+def merge_ranges(ranges: list[(int, int)]) -> list[(int, int)]:
+    print(ranges)
+    new_ranges: list[(int, int)] = []
+    for (rs, rl) in ranges:
+        for i, (nrs, nrl) in enumerate(new_ranges):
+            if nrs <= rs <= nrs + nrl:
+                new_len = max(rs + rl, nrs + nrl) - nrs
+                new_ranges[i] = (nrs, new_len)
+            elif nrs <= (rs + rl) <= nrs + nrl:
+                new_start = min(nrs, rs)
+                new_len = max(rs + rl, nrs + nrl) - new_start
+                new_ranges[i] = (new_start, new_len)
+    else:
+        new_ranges.append((rs, rl))
+
+    return new_ranges
 
 f = open("input.txt")
 lines = f.readlines()
@@ -35,8 +51,10 @@ i = 0
 while i < len(seeds):
     seed_ranges.append((seeds[i], seeds[i+1]))
     i += 2
-
-for (s, l) in seed_ranges:
+    
+new_ranges: list[(int, int)] = merge_ranges(seed_ranges)
+print(new_ranges)
+for (s, l) in new_ranges:
     for loc in range(l):
         locations.append(seed_map.find_location_for_seed(s + loc))
 

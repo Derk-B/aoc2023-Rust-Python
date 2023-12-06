@@ -4,10 +4,19 @@ seed-to-soil map:
 50 98 2
 52 50 48
 
+# current impl:
+for i in [79, 80, .. , 93]
+gives: [81, ..., 95] // 14 calcuations: calculated [79 .. 93] -> [81 ... 95]
+
+# new impl:
+(79, 14) -> map -> (81, 14) // 1 calculation: calculated 79 -> 81
+
 soil-to-fertilizer map:
 0 15 37
 37 52 2
 39 0 15
+
+(81, 14)
 
 fertilizer-to-water map:
 49 53 8
@@ -15,19 +24,23 @@ fertilizer-to-water map:
 42 0 7
 57 7 4
 
+(81, 14)
+
 water-to-light map:
 88 18 7
 18 25 70
+
+(81, 14) -> map -> (74, 14)
 
 light-to-temperature map:
 45 77 23
 81 45 19
 68 64 13
 
-temperature-to-humidity map:
-0 69 1
-1 0 69
+(81, 14) -> map -> [(78, 3),(45, 11)]
 
-humidity-to-location map:
-60 56 37
-56 93 4
+finished
+
+find minimum:
+[ ... ] // 70 calculations plus finding minimum is a long list
+[(78, 3),(45, 11)] = 45 // 6 calculations plus finding the minimum in a short list
